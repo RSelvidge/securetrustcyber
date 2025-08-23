@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Cybersecurity Blog | SecureTrust</title>
+    <meta name="description" content="Explore the latest insights in cybersecurity, with articles on SASE, XDR, SIEM, RMM, and threat intelligence from the experts at SecureTrust.">
+    <meta name="keywords" content="cybersecurity blog, threat intelligence, SASE, XDR, SIEM, RMM, information security">
+    <meta name="author" content="SecureTrust">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://securetrust.io/blog">
+    <meta property="og:title" content="Cybersecurity Blog | SecureTrust">
+    <meta property="og:description" content="Explore the latest insights in cybersecurity, with articles on SASE, XDR, SIEM, RMM, and threat intelligence from the experts at SecureTrust.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=SecureTrust+Blog">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://securetrust.io/blog">
+    <meta property="twitter:title" content="Cybersecurity Blog | SecureTrust">
+    <meta property="twitter:description" content="Explore the latest insights in cybersecurity, with articles on SASE, XDR, SIEM, RMM, and threat intelligence from the experts at SecureTrust.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=SecureTrust+Blog">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/1e1b4b/ffffff?text=ST" type="image/png">
+
+    <!-- Styles and Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-pink': '#ec4899',
+                        'brand-purple': '#8b5cf6',
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .bg-gradient-dark {
+            background-color: #0c0a1e;
+            background-image: radial-gradient(circle at top left, rgba(139, 92, 246, 0.2), transparent 30%), radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.2), transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans bg-gradient-dark">
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                <span class="text-2xl font-bold text-white">SecureTrust</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#platform" class="hover:text-brand-pink transition-colors duration-300">Platform</a>
+                <a href="blog.html" class="text-brand-pink font-bold">Blog</a>
+                <a href="index.html#why-us" class="hover:text-brand-pink transition-colors duration-300">Why Us</a>
+                <a href="index.html#contact" class="hover:text-brand-pink transition-colors duration-300">Contact</a>
+            </nav>
+            
+            <a href="index.html#contact" class="hidden md:inline-block bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Get a Quote</a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html#platform" class="block py-2 hover:text-brand-pink">Platform</a>
+            <a href="blog.html" class="block py-2 text-brand-pink font-bold">Blog</a>
+            <a href="index.html#why-us" class="block py-2 hover:text-brand-pink">Why Us</a>
+            <a href="index.html#contact" class="block py-2 hover:text-brand-pink">Contact</a>
+            <a href="index.html#contact" class="block mt-4 text-center bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Blog Hero Section -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight my-4 fade-in">
+                    SecureTrust Insights
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 fade-in" style="transition-delay: 150ms;">
+                    Your expert source for the latest trends, analysis, and best practices in cybersecurity and compliance.
+                </p>
+            </div>
+        </section>
+
+        <!-- Blog Grid Section -->
+        <section class="py-20 md:py-28 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <!-- Featured Post -->
+                <div class="mb-16 fade-in">
+                    <a href="blog-post.html" class="block group">
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <img src="https://placehold.co/600x400/111827/ec4899?text=Featured+Article" alt="Featured blog post image" class="rounded-xl shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                            <div>
+                                <span class="text-brand-purple font-semibold text-sm">XDR</span>
+                                <h2 class="text-3xl font-bold text-white my-3 group-hover:text-brand-pink transition-colors duration-300">What is Threat Hunting and Why Do You Need It?</h2>
+                                <p class="text-gray-400 mb-4">Go beyond automated alerts. Learn how proactive threat hunting can uncover the hidden adversaries in your network before they can cause damage.</p>
+                                <div class="text-sm text-gray-500">
+                                    <span>By Jane Doe</span> &bull; <span>August 22, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Recent Posts -->
+                <h3 class="text-2xl font-bold text-white mb-8 fade-in">Recent Posts</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post Card -->
+                    <div class="fade-in">
+                        <a href="blog-post.html" class="block group">
+                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=SASE" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                            <span class="text-brand-purple font-semibold text-sm">SASE</span>
+                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">5 Signs Your Business Has Outgrown Traditional VPNs</h4>
+                            <div class="text-sm text-gray-500">
+                                <span>By John Smith</span> &bull; <span>August 20, 2025</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Blog Post Card -->
+                     <div class="fade-in">
+                        <a href="blog-post.html" class="block group">
+                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=SIEM" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                            <span class="text-brand-purple font-semibold text-sm">SIEM</span>
+                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">A Small Business Guide to Understanding SIEM</h4>
+                             <div class="text-sm text-gray-500">
+                                <span>By Emily White</span> &bull; <span>August 18, 2025</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Blog Post Card -->
+                     <div class="fade-in">
+                        <a href="blog-post.html" class="block group">
+                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=RMM" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                            <span class="text-brand-purple font-semibold text-sm">RMM</span>
+                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">The Top 3 Benefits of Automated Patch Management</h4>
+                             <div class="text-sm text-gray-500">
+                                <span>By Jane Doe</span> &bull; <span>August 15, 2025</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-transparent border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4"><svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg><span class="text-2xl font-bold text-white">SecureTrust</span></a>
+                    <p class="text-gray-400 max-w-sm">Your dedicated partner in navigating the complexities of cybersecurity and compliance.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Platform</h4>
+                    <ul class="space-y-2">
+                        <li><a href="sase.html" class="text-gray-400 hover:text-brand-pink">SASE</a></li>
+                        <li><a href="xdr.html" class="text-gray-400 hover:text-brand-pink">XDR</a></li>
+                        <li><a href="siem.html" class="text-gray-400 hover:text-brand-pink">SIEM</a></li>
+                        <li><a href="rmm.html" class="text-gray-400 hover:text-brand-pink">RMM</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact</h4>
+                     <ul class="space-y-2 text-gray-400">
+                        <li><a href="mailto:info@securetrust.io" class="hover:text-brand-pink">info@securetrust.io</a></li>
+                        <li><a href="tel:+18005551234" class="hover:text-brand-pink">+1 (800) 555-1234</a></li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 SecureTrust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+
+        // Fade-in animation on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) { return; }
+                else { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+            });
+        }, appearOptions);
+        faders.forEach(fader => { appearOnScroll.observe(fader); });
+    </script>
+</body>
+</html>

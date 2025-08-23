@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Pricing Calculator | SecureTrust</title>
+    <meta name="description" content="Calculate your estimated monthly and annual cost for SecureTrust's unified security platform. Select your services and number of employees to get a quote.">
+    <meta name="keywords" content="pricing calculator, cybersecurity cost, SASE pricing, XDR pricing, SIEM pricing, RMM pricing">
+    <meta name="author" content="SecureTrust">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://securetrust.io/pricing">
+    <meta property="og:title" content="Pricing Calculator | SecureTrust">
+    <meta property="og:description" content="Calculate your estimated monthly and annual cost for SecureTrust's unified security platform.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=SecureTrust+Pricing">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://securetrust.io/pricing">
+    <meta property="twitter:title" content="Pricing Calculator | SecureTrust">
+    <meta property="twitter:description" content="Calculate your estimated monthly and annual cost for SecureTrust's unified security platform.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=SecureTrust+Pricing">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/1e1b4b/ffffff?text=ST" type="image/png">
+
+    <!-- Styles and Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-pink': '#ec4899',
+                        'brand-purple': '#8b5cf6',
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .bg-gradient-dark {
+            background-color: #0c0a1e;
+            background-image: radial-gradient(circle at top left, rgba(139, 92, 246, 0.2), transparent 30%), radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.2), transparent 40%);
+        }
+        /* Styles for disabled checkbox */
+        input[type=checkbox]:disabled + span {
+            color: #6b7280; /* gray-500 */
+        }
+        label.disabled {
+            cursor: not-allowed;
+            background-color: #374151; /* gray-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans bg-gradient-dark">
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                <span class="text-2xl font-bold text-white">SecureTrust</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#platform" class="hover:text-brand-pink transition-colors duration-300">Platform</a>
+                <a href="blog.html" class="hover:text-brand-pink transition-colors duration-300">Blog</a>
+                <a href="why-us.html" class="hover:text-brand-pink transition-colors duration-300">Why Us</a>
+                <a href="pricing.html" class="text-brand-pink font-bold">Pricing</a>
+                <a href="index.html#contact" class="hover:text-brand-pink transition-colors duration-300">Contact</a>
+            </nav>
+            <a href="index.html#contact" class="hidden md:inline-block bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Get a Quote</a>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html#platform" class="block py-2 hover:text-brand-pink">Platform</a>
+            <a href="blog.html" class="block py-2 hover:text-brand-pink">Blog</a>
+            <a href="why-us.html" class="block py-2 hover:text-brand-pink">Why Us</a>
+            <a href="pricing.html" class="block py-2 text-brand-pink font-bold">Pricing</a>
+            <a href="index.html#contact" class="block py-2 hover:text-brand-pink">Contact</a>
+            <a href="index.html#contact" class="block mt-4 text-center bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Pricing Hero Section -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight my-4 fade-in">
+                    Transparent Pricing
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 fade-in" style="transition-delay: 150ms;">
+                    No hidden fees. No surprises. Use our calculator to estimate your costs, and contact us for a detailed, custom quote.
+                </p>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="py-20 md:py-28 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-8 md:p-12">
+                    <!-- Left Side: Controls -->
+                    <div class="fade-in">
+                        <h2 class="text-3xl font-bold text-white mb-8">Estimate Your Cost</h2>
+                        
+                        <!-- Devices Dropdown -->
+                        <div class="mb-8">
+                            <label for="devices" class="block text-lg font-semibold mb-2">Number of Devices</label>
+                            <select id="devices" name="devices" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:ring-brand-purple focus:border-brand-purple">
+                                <!-- Options will be populated by script -->
+                            </select>
+                        </div>
+
+                        <!-- Services Checkboxes -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Select Services</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center p-4 bg-gray-700/50 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                                    <input type="checkbox" id="sase" class="h-5 w-5 rounded text-brand-purple focus:ring-brand-purple">
+                                    <span class="ml-4 text-white font-semibold">SASE</span>
+                                </label>
+                                <label id="xdr-siem-label" class="flex items-center p-4 bg-gray-700/50 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                                    <input type="checkbox" id="xdr-siem" class="h-5 w-5 rounded text-brand-purple focus:ring-brand-purple">
+                                    <span class="ml-4 text-white font-semibold">XDR + SIEM (Requires SASE)</span>
+                                </label>
+                                <label id="rmm-label" class="flex items-center p-4 bg-gray-700/50 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors">
+                                    <input type="checkbox" id="rmm" class="h-5 w-5 rounded text-brand-purple focus:ring-brand-purple">
+                                    <span class="ml-4 text-white font-semibold">RMM (Requires SASE)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Results -->
+                    <div class="bg-gray-900/50 rounded-2xl p-8 text-center flex flex-col justify-center fade-in" style="transition-delay: 150ms;">
+                        <p class="text-gray-400 font-semibold">ESTIMATED MONTHLY COST</p>
+                        <p class="text-5xl md:text-6xl font-extrabold text-white my-4" id="monthly-cost">$0</p>
+                        <p class="text-gray-400 font-semibold">ESTIMATED ANNUAL COST</p>
+                        <p class="text-2xl font-bold text-white mt-2" id="annual-cost">$0</p>
+                        <p class="text-sm text-green-400 mt-2">(Includes 10% discount)</p>
+                        
+                        <a href="index.html#contact" class="mt-8 bg-brand-pink hover:bg-pink-500 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 hover:scale-105 inline-block">
+                            Get a Custom Quote
+                        </a>
+                        <p class="text-xs text-gray-500 mt-4">If you have less than 10 devices, contact us for pricing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-transparent border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4"><svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg><span class="text-2xl font-bold text-white">SecureTrust</span></a>
+                    <p class="text-gray-400 max-w-sm">Your dedicated partner in navigating the complexities of cybersecurity and compliance.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Platform</h4>
+                    <ul class="space-y-2">
+                        <li><a href="sase.html" class="text-gray-400 hover:text-brand-pink">SASE</a></li>
+                        <li><a href="xdr.html" class="text-gray-400 hover:text-brand-pink">XDR</a></li>
+                        <li><a href="siem.html" class="text-gray-400 hover:text-brand-pink">SIEM</a></li>
+                        <li><a href="rmm.html" class="text-gray-400 hover:text-brand-pink">RMM</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Company</h4>
+                     <ul class="space-y-2 text-gray-400">
+                        <li><a href="why-us.html" class="text-gray-400 hover:text-brand-pink">Why Us</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-brand-pink">Blog</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-brand-pink">Pricing</a></li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 SecureTrust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calculator Logic
+        const deviceSelect = document.getElementById('devices');
+        const monthlyCostSpan = document.getElementById('monthly-cost');
+        const annualCostSpan = document.getElementById('annual-cost');
+        const rmmLabel = document.getElementById('rmm-label');
+        const xdrSiemLabel = document.getElementById('xdr-siem-label');
+
+        const serviceCheckboxes = {
+            sase: document.getElementById('sase'),
+            'xdr-siem': document.getElementById('xdr-siem'),
+            rmm: document.getElementById('rmm'),
+        };
+
+        const baseCosts = {
+            sase: 12,
+            'xdr-siem': 15,
+            rmm: 8,
+        };
+
+        // Populate device dropdown
+        function populateDeviceOptions() {
+            for (let i = 10; i <= 50; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                deviceSelect.appendChild(option);
+            }
+            for (let i = 60; i <= 100; i += 10) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                deviceSelect.appendChild(option);
+            }
+            for (let i = 150; i <= 500; i += 50) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                deviceSelect.appendChild(option);
+            }
+             for (let i = 600; i <= 1000; i += 100) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                deviceSelect.appendChild(option);
+            }
+            deviceSelect.value = 250; // Set default
+        }
+
+        function updateDependentServices() {
+            const saseChecked = serviceCheckboxes.sase.checked;
+
+            if (saseChecked) {
+                serviceCheckboxes['xdr-siem'].disabled = false;
+                xdrSiemLabel.classList.remove('disabled');
+                serviceCheckboxes.rmm.disabled = false;
+                rmmLabel.classList.remove('disabled');
+            } else {
+                serviceCheckboxes['xdr-siem'].disabled = true;
+                serviceCheckboxes['xdr-siem'].checked = false;
+                xdrSiemLabel.classList.add('disabled');
+                serviceCheckboxes.rmm.disabled = true;
+                serviceCheckboxes.rmm.checked = false;
+                rmmLabel.classList.add('disabled');
+            }
+        }
+
+        function calculatePrice() {
+            const deviceCount = parseInt(deviceSelect.value);
+
+            const saseChecked = serviceCheckboxes.sase.checked;
+            const xdrSiemChecked = serviceCheckboxes['xdr-siem'].checked;
+            const rmmChecked = serviceCheckboxes.rmm.checked;
+
+            let perDeviceCost = 0;
+
+            if (saseChecked && xdrSiemChecked && rmmChecked) {
+                perDeviceCost = 30;
+            } else if (saseChecked && rmmChecked && !xdrSiemChecked) {
+                perDeviceCost = 15;
+            } else {
+                if (saseChecked) perDeviceCost += baseCosts.sase;
+                if (xdrSiemChecked) perDeviceCost += baseCosts['xdr-siem'];
+                if (rmmChecked) perDeviceCost += baseCosts.rmm;
+            }
+
+            const totalMonthlyCost = perDeviceCost * deviceCount;
+            const totalAnnualCost = totalMonthlyCost * 12 * 0.9;
+
+            monthlyCostSpan.textContent = `$${totalMonthlyCost.toLocaleString()}`;
+            annualCostSpan.textContent = `$${totalAnnualCost.toLocaleString()}`;
+        }
+
+        function handleServiceChange() {
+            updateDependentServices();
+            calculatePrice();
+        }
+
+        deviceSelect.addEventListener('change', calculatePrice);
+        serviceCheckboxes.sase.addEventListener('change', handleServiceChange);
+        serviceCheckboxes['xdr-siem'].addEventListener('change', calculatePrice);
+        serviceCheckboxes.rmm.addEventListener('change', calculatePrice);
+        
+        // Initial setup
+        populateDeviceOptions();
+        updateDependentServices();
+        calculatePrice();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+
+        // Fade-in animation on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) { return; }
+                else { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+            });
+        }, appearOptions);
+        faders.forEach(fader => { appearOnScroll.observe(fader); });
+    </script>
+</body>
+</html>

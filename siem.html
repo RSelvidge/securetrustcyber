@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIEM - Security Information & Event Management | SecureTrust</title>
+    <meta name="description" content="SecureTrust's SIEM platform offers centralized security log analysis, vulnerability detection, and regulatory compliance to transform data into actionable intelligence.">
+    <meta name="keywords" content="SIEM, Security Information and Event Management, log analysis, compliance, vulnerability detection, security analytics">
+    <meta name="author" content="SecureTrust">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-pink': '#ec4899',
+                        'brand-purple': '#8b5cf6',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .bg-gradient-dark {
+            background-color: #0c0a1e;
+            background-image: radial-gradient(circle at top left, rgba(139, 92, 246, 0.2), transparent 30%), radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.2), transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans bg-gradient-dark">
+    <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                <span class="text-2xl font-bold text-white">SecureTrust</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#platform" class="hover:text-brand-pink transition-colors duration-300">Platform</a>
+                <a href="index.html#why-us" class="hover:text-brand-pink transition-colors duration-300">Why Us</a>
+                <a href="index.html#testimonials" class="hover:text-brand-pink transition-colors duration-300">Testimonials</a>
+                <a href="index.html#contact" class="hover:text-brand-pink transition-colors duration-300">Contact</a>
+            </nav>
+            <a href="index.html#contact" class="hidden md:inline-block bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Get a Quote</a>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html#platform" class="block py-2 hover:text-brand-pink">Platform</a>
+            <a href="index.html#why-us" class="block py-2 hover:text-brand-pink">Why Us</a>
+            <a href="index.html#testimonials" class="block py-2 hover:text-brand-pink">Testimonials</a>
+            <a href="index.html#contact" class="block py-2 hover:text-brand-pink">Contact</a>
+            <a href="index.html#contact" class="block mt-4 text-center bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg">Get a Quote</a>
+        </div>
+    </header>
+    <main>
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <span class="text-brand-purple font-bold">Security Information & Event Management</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight my-4 fade-in">Actionable Intelligence from Your Data</h1>
+                    <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 fade-in" style="transition-delay: 150ms;">Our SIEM platform collects, aggregates, and analyzes log data from across your entire IT infrastructure, providing the visibility you need to detect threats, respond to incidents, and meet compliance requirements.</p>
+                </div>
+                <div class="fade-in" style="transition-delay: 300ms;"><img src="https://storage.googleapis.com/gemini-prod-us-west1-423927494195/uploaded/dashboard-security-log-analysis.jpg" alt="SIEM Dashboard showing log data analysis and compliance details" class="rounded-xl shadow-2xl shadow-brand-purple/20 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/1000x500/111827/ec4899?text=SIEM+Dashboard';"></div>
+            </div>
+        </section>
+        <section class="py-20 md:py-28 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="mb-20">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 fade-in">Core Capabilities</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="flex items-start space-x-4 fade-in">
+                            <div class="bg-brand-purple/10 text-brand-purple rounded-lg w-12 h-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 00-4-4H3V9a4 4 0 014-4h2a4 4 0 014 4v2m-6 4h12a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm12-8V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4h12z" /></svg></div>
+                            <div><h3 class="text-xl font-bold text-white mb-1">Security Log Analysis</h3><p class="text-gray-400">Ingest and analyze logs from any source to find hidden threats.</p></div>
+                        </div>
+                        <div class="flex items-start space-x-4 fade-in">
+                            <div class="bg-brand-purple/10 text-brand-purple rounded-lg w-12 h-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div>
+                            <div><h3 class="text-xl font-bold text-white mb-1">Vulnerability Detection</h3><p class="text-gray-400">Continuously scan for and prioritize system vulnerabilities.</p></div>
+                        </div>
+                        <div class="flex items-start space-x-4 fade-in">
+                            <div class="bg-brand-purple/10 text-brand-purple rounded-lg w-12 h-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
+                            <div><h3 class="text-xl font-bold text-white mb-1">Security Configuration Assessment</h3><p class="text-gray-400">Audit your systems against security best practices and policies.</p></div>
+                        </div>
+                        <div class="flex items-start space-x-4 fade-in">
+                            <div class="bg-brand-purple/10 text-brand-purple rounded-lg w-12 h-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
+                            <div><h3 class="text-xl font-bold text-white mb-1">Regulatory Compliance</h3><p class="text-gray-400">Meet compliance standards like PCI DSS, HIPAA, and GDPR.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 fade-in">Key Features</h2>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="flex items-start space-x-4 fade-in">
+                            <div class="bg-brand-purple/10 text-brand-purple rounded-lg w-12 h-12 flex-shrink-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg></div>
+                            <div><h3 class="text-xl font-bold text-white mb-1">Alerting and Notification</h3><p class="text-gray-400">Get real-time, context-rich alerts for critical security events.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center bg-gray-800/50 border border-gray-700 rounded-2xl py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 fade-in">See SIEM in Action</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto mb-8 fade-in" style="transition-delay: 150ms;">Ready to gain full visibility into your security posture? Schedule a personalized demo of the SecureTrust SIEM platform today.</p>
+                <div class="fade-in" style="transition-delay: 300ms;"><a href="mailto:info@securetrust.io" class="bg-brand-pink hover:bg-pink-500 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 hover:scale-105 inline-block">Request a Demo</a></div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-transparent border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4"><svg class="h-8 w-8 text-brand-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg><span class="text-2xl font-bold text-white">SecureTrust</span></a>
+                    <p class="text-gray-400 max-w-sm">Your dedicated partner in navigating the complexities of cybersecurity and compliance.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Platform</h4>
+                    <ul class="space-y-2">
+                        <li><a href="sase.html" class="text-gray-400 hover:text-brand-pink">SASE</a></li>
+                        <li><a href="xdr.html" class="text-gray-400 hover:text-brand-pink">XDR</a></li>
+                        <li><a href="siem.html" class="text-gray-400 hover:text-brand-pink">SIEM</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-pink">RMM (coming soon)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="mailto:info@securetrust.io" class="hover:text-brand-pink">info@securetrust.io</a></li>
+                        <li><a href="tel:+18005551234" class="hover:text-brand-pink">+1 (800) 555-1234</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500"><p>&copy; 2024 SecureTrust. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) { return; }
+                else { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+            });
+        }, appearOptions);
+        faders.forEach(fader => { appearOnScroll.observe(fader); });
+    </script>
+</body>
+</html>
