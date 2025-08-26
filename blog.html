@@ -108,58 +108,20 @@
         <!-- Blog Grid Section -->
         <section class="py-20 md:py-28 bg-gray-900/50">
             <div class="container mx-auto px-6">
-                <!-- Featured Post -->
-                <div class="mb-16 fade-in">
-                    <a href="blog-post.html" class="block group">
-                        <div class="grid lg:grid-cols-2 gap-8 items-center">
-                            <img src="https://placehold.co/600x400/111827/ec4899?text=Featured+Article" alt="Featured blog post image" class="rounded-xl shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
-                            <div>
-                                <span class="text-brand-purple font-semibold text-sm">XDR</span>
-                                <h2 class="text-3xl font-bold text-white my-3 group-hover:text-brand-pink transition-colors duration-300">What is Threat Hunting and Why Do You Need It?</h2>
-                                <p class="text-gray-400 mb-4">Go beyond automated alerts. Learn how proactive threat hunting can uncover the hidden adversaries in your network before they can cause damage.</p>
-                                <div class="text-sm text-gray-500">
-                                    <span>By Jane Doe</span> &bull; <span>August 22, 2025</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                <div id="loading-indicator" class="text-center">
+                    <p class="text-2xl text-gray-400">Loading posts...</p>
                 </div>
-
-                <!-- Recent Posts -->
-                <h3 class="text-2xl font-bold text-white mb-8 fade-in">Recent Posts</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Blog Post Card -->
-                    <div class="fade-in">
-                        <a href="blog-post.html" class="block group">
-                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=SASE" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
-                            <span class="text-brand-purple font-semibold text-sm">SASE</span>
-                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">5 Signs Your Business Has Outgrown Traditional VPNs</h4>
-                            <div class="text-sm text-gray-500">
-                                <span>By John Smith</span> &bull; <span>August 20, 2025</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Blog Post Card -->
-                     <div class="fade-in">
-                        <a href="blog-post.html" class="block group">
-                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=SIEM" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
-                            <span class="text-brand-purple font-semibold text-sm">SIEM</span>
-                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">A Small Business Guide to Understanding SIEM</h4>
-                             <div class="text-sm text-gray-500">
-                                <span>By Emily White</span> &bull; <span>August 18, 2025</span>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Blog Post Card -->
-                     <div class="fade-in">
-                        <a href="blog-post.html" class="block group">
-                            <img src="https://placehold.co/600x400/111827/8b5cf6?text=RMM" alt="Blog post image" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
-                            <span class="text-brand-purple font-semibold text-sm">RMM</span>
-                            <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">The Top 3 Benefits of Automated Patch Management</h4>
-                             <div class="text-sm text-gray-500">
-                                <span>By Jane Doe</span> &bull; <span>August 15, 2025</span>
-                            </div>
-                        </a>
+                <div id="error-message" class="hidden text-center bg-red-900/50 p-8 rounded-xl">
+                    <h2 class="text-3xl font-bold text-white mb-4">Oops! Something went wrong.</h2>
+                    <p class="text-red-300">We couldn't load the blog posts at this time. Please try again later.</p>
+                </div>
+                <div id="blog-grid-container" class="hidden">
+                    <!-- Featured Post will be injected here -->
+                    <div id="featured-post" class="mb-16"></div>
+                    <!-- Recent Posts will be injected here -->
+                    <h3 class="text-2xl font-bold text-white mb-8 fade-in">Recent Posts</h3>
+                    <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Blog post cards will be injected here by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -215,6 +177,107 @@
             });
         }, appearOptions);
         faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+        // Strapi Integration
+        const STRAPI_URL = "https://engaging-event-68db7a0c3b.strapiapp.com";
+        const STRAPI_API_TOKEN = "a821fd06c71906eee1849ba00e52a027b230bdb479c007e932bb103995bb24f68957cc44f5ffbdafad2d17f7c7e43bd17926d929a85a278e9294b2f31e338b03179d983c4c1073b74bf9e5796d1e0801b23a04c8958854927865003f8f6b6c03e17ee22233c872f803d72891bbaaf2cf563e4d5e17ba57d703d1573cd0de6a64";
+
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const errorMessage = document.getElementById('error-message');
+        const blogGridContainer = document.getElementById('blog-grid-container');
+        const featuredPostContainer = document.getElementById('featured-post');
+        const blogGrid = document.getElementById('blog-grid');
+
+        const formatDate = (dateString) => {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        };
+
+        const createFeaturedPostCard = (post) => {
+            const { id, attributes } = post;
+            const postUrl = `blog-post.html?id=${id}`;
+            const imageUrl = attributes.Cover?.data?.attributes?.url ? `${STRAPI_URL}${attributes.Cover.data.attributes.url}` : 'https://placehold.co/600x400/111827/ec4899?text=Featured+Article';
+
+            return `
+                <a href="${postUrl}" class="block group fade-in">
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <img src="${imageUrl}" alt="${attributes.Title}" class="rounded-xl shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                        <div>
+                            <span class="text-brand-purple font-semibold text-sm">${attributes.Category || 'General'}</span>
+                            <h2 class="text-3xl font-bold text-white my-3 group-hover:text-brand-pink transition-colors duration-300">${attributes.Title}</h2>
+                            <p class="text-gray-400 mb-4">${attributes.Summary || ''}</p>
+                            <div class="text-sm text-gray-500">
+                                <span>By ${attributes.author?.data?.attributes?.Name || 'SecureTrust'}</span> &bull; <span>${formatDate(attributes.publishedAt)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
+        };
+
+        const createPostCard = (post) => {
+            const { id, attributes } = post;
+            const postUrl = `blog-post.html?id=${id}`;
+            const imageUrl = attributes.Cover?.data?.attributes?.url ? `${STRAPI_URL}${attributes.Cover.data.attributes.url}` : `https://placehold.co/600x400/111827/8b5cf6?text=${attributes.Category || 'Post'}`;
+
+            return `
+                <div class="fade-in">
+                    <a href="${postUrl}" class="block group">
+                        <img src="${imageUrl}" alt="${attributes.Title}" class="rounded-xl mb-4 shadow-lg group-hover:shadow-brand-purple/30 transition-shadow duration-300">
+                        <span class="text-brand-purple font-semibold text-sm">${attributes.Category || 'General'}</span>
+                        <h4 class="text-xl font-bold text-white my-2 group-hover:text-brand-pink transition-colors duration-300">${attributes.Title}</h4>
+                        <div class="text-sm text-gray-500">
+                            <span>By ${attributes.author?.data?.attributes?.Name || 'SecureTrust'}</span> &bull; <span>${formatDate(attributes.publishedAt)}</span>
+                        </div>
+                    </a>
+                </div>
+            `;
+        };
+
+        const fetchPosts = async () => {
+            try {
+                // Fetch posts, sorting by publication date descending, and populating relations
+                const response = await fetch(`${STRAPI_URL}/api/blogs?sort=publishedAt:desc&populate=*`, {
+                    headers: { 'Authorization': `Bearer ${STRAPI_API_TOKEN}` }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const { data } = await response.json();
+
+                if (data && data.length > 0) {
+                    // First post is the featured one
+                    const [featuredPost, ...otherPosts] = data;
+
+                    featuredPostContainer.innerHTML = createFeaturedPostCard(featuredPost);
+
+                    // The rest are recent posts
+                    blogGrid.innerHTML = otherPosts.map(createPostCard).join('');
+
+                    // Show the grid
+                    blogGridContainer.classList.remove('hidden');
+
+                    // Re-initialize faders for animations
+                    const newFaders = document.querySelectorAll('.fade-in');
+                    newFaders.forEach(fader => { appearOnScroll.observe(fader); });
+
+                } else {
+                    // Handle case with no posts
+                    errorMessage.querySelector('p').textContent = 'No blog posts found.';
+                    errorMessage.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error("Failed to fetch posts:", error);
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', fetchPosts);
     </script>
 </body>
 </html>
