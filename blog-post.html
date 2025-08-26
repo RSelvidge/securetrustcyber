@@ -3,47 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags: UPDATE FOR EACH POST -->
-    <title>Blog Post Title | SecureTrust</title>
-    <meta name="description" content="A brief, compelling summary of the blog post goes here. This will appear in search engine results.">
-    <meta name="keywords" content="relevant, keywords, for, this, post">
-    <meta name="author" content="Author Name">
-    
-    <!-- Open Graph / Facebook -->
+
+    <!-- SEO Meta Tags will be updated dynamically -->
+    <title>Blog Post | SecureTrust</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://securetrust.io/blog/your-post-url">
-    <meta property="og:title" content="Blog Post Title | SecureTrust">
-    <meta property="og:description" content="A brief, compelling summary of the blog post goes here.">
-    <meta property="og:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=Article+Image">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://securetrust.io/blog/your-post-url">
-    <meta property="twitter:title" content="Blog Post Title | SecureTrust">
-    <meta property="twitter:description" content="A brief, compelling summary of the blog post goes here.">
-    <meta property="twitter:image" content="https://placehold.co/1200x630/1e1b4b/ffffff?text=Article+Image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
 
-    <!-- Favicon -->
     <link rel="icon" href="https://placehold.co/32x32/1e1b4b/ffffff?text=ST" type="image/png">
 
-    <!-- Styles and Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-pink': '#ec4899',
-                        'brand-purple': '#8b5cf6',
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { 'brand-pink': '#ec4899', 'brand-purple': '#8b5cf6' },
                     typography: ({ theme }) => ({
                         invert: {
                             css: {
@@ -68,12 +61,10 @@
                     }),
                 },
             },
-            plugins: [
-                require('@tailwindcss/typography'),
-            ],
+            plugins: [ require('@tailwindcss/typography') ],
         }
     </script>
-    
+
     <style>
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -85,7 +76,6 @@
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans bg-gradient-dark">
 
-    <!-- Header & Navigation -->
     <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2">
@@ -111,53 +101,30 @@
     </header>
 
     <main>
-        <!-- Article Content Section -->
         <section class="py-20 md:py-32">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-12">
-                    <span class="text-brand-purple font-semibold">XDR</span>
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight my-4">
-                        What is Threat Hunting and Why Do You Need It?
-                    </h1>
-                    <div class="text-gray-400">
-                        <span>By Jane Doe</span> &bull; <span>August 22, 2025</span>
-                    </div>
+            <div id="loading-indicator" class="text-center">
+                <p class="text-2xl text-gray-400">Loading post...</p>
+            </div>
+            <div id="error-message" class="hidden text-center bg-red-900/50 p-8 rounded-xl max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">Oops! Something went wrong.</h2>
+                <p class="text-red-300" id="error-text">We couldn't load the blog post at this time.</p>
+                <a href="blog.html" class="mt-6 inline-block bg-brand-pink hover:bg-pink-500 text-white font-semibold py-2 px-4 rounded-lg">Back to Blog</a>
+            </div>
+
+            <div id="post-container" class="hidden container mx-auto px-6 max-w-4xl">
+                <div id="post-header" class="text-center mb-12">
+                    <span id="post-category" class="text-brand-purple font-semibold"></span>
+                    <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold text-white leading-tight my-4"></h1>
+                    <div id="post-meta" class="text-gray-400"></div>
                 </div>
-                
-                <img src="https://placehold.co/1000x500/111827/ec4899?text=Article+Hero+Image" alt="Article hero image" class="rounded-xl shadow-2xl shadow-brand-purple/20 mx-auto mb-12">
 
-                <article class="prose prose-lg prose-invert mx-auto">
-                    <p class="lead">Go beyond automated alerts. Learn how proactive threat hunting can uncover the hidden adversaries in your network before they can cause damage. This is the introductory paragraph that sets the stage for the rest of the article.</p>
-                    
-                    <h2>The Limitations of Automated Defense</h2>
-                    <p>While automated security tools like firewalls and antivirus are essential, they are primarily reactive. They rely on known signatures and rules to identify threats. However, sophisticated attackers are constantly developing new techniques to bypass these defenses. This is where threat hunting comes in.</p>
-                    
-                    <blockquote>
-                        "Threat hunting is the proactive search for cyber threats that are lurking undetected in a network."
-                    </blockquote>
-                    
-                    <h2>How Threat Hunting Works</h2>
-                    <p>Instead of waiting for an alert, threat hunters actively search for indicators of compromise (IOCs). This involves:</p>
-                    <ul>
-                        <li><strong>Formulating a Hypothesis:</strong> A hunter might hypothesize that an attacker is using a specific technique to maintain persistence.</li>
-                        <li><strong>Investigating:</strong> They then dive into data from various sources (endpoints, network logs, etc.) to find evidence that supports or refutes the hypothesis.</li>
-                        <li><strong>Uncovering New Patterns:</strong> This process often reveals new malicious patterns and TTPs (Tactics, Techniques, and Procedures) that can be used to improve automated defenses.</li>
-                    </ul>
+                <img id="post-image" src="" alt="" class="rounded-xl shadow-2xl shadow-brand-purple/20 mx-auto mb-12">
 
-                    <h3>Key Benefits for Your Business</h3>
-                    <p>Integrating threat hunting into your security strategy provides several key benefits:</p>
-                    <ol>
-                        <li><strong>Reduce Dwell Time:</strong> Drastically shorten the time an attacker can remain undetected in your network.</li>
-                        <li><strong>Improve Incident Response:</strong> Gain a deeper understanding of attacks to improve your response and recovery processes.</li>
-                        <li><strong>Enhance Security Posture:</strong> Use the findings from hunts to strengthen your overall security controls.</li>
-                    </ol>
-                    <p>Ready to take a more proactive approach to your security? Our XDR platform empowers your team with the tools they need to hunt for threats effectively. <a href="xdr.html">Learn more about SecureTrust XDR</a>.</p>
-                </article>
+                <article id="post-content" class="prose prose-lg prose-invert mx-auto"></article>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-transparent border-t border-gray-800">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -178,7 +145,6 @@
                     <h4 class="font-bold text-white mb-4">Contact</h4>
                      <ul class="space-y-2 text-gray-400">
                         <li><a href="mailto:info@securetrust.io" class="hover:text-brand-pink">info@securetrust.io</a></li>
-                        
                      </ul>
                 </div>
             </div>
@@ -196,17 +162,101 @@
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
 
-        // Fade-in animation on scroll
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) { return; }
-                else { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-            });
-        }, appearOptions);
-        faders.forEach(fader => { appearOnScroll.observe(fader); });
+        // Strapi Integration
+        const STRAPI_URL = "https://engaging-event-68db7a0c3b.strapiapp.com";
+        const STRAPI_API_TOKEN = "a821fd06c71906eee1849ba00e52a027b230bdb479c007e932bb103995bb24f68957cc44f5ffbdafad2d17f7c7e43bd17926d929a85a278e9294b2f31e338b03179d983c4c1073b74bf9e5796d1e0801b23a04c8958854927865003f8f6b6c03e17ee22233c872f803d72891bbaaf2cf563e4d5e17ba57d703d1573cd0de6a64";
+
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const postContainer = document.getElementById('post-container');
+
+        const formatDate = (dateString) => {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        };
+
+        const updateMetaTags = (post) => {
+            const { Title, Summary, Cover, Keywords } = post;
+            const imageUrl = Cover?.data?.attributes?.url ? `${STRAPI_URL}${Cover.data.attributes.url}` : 'https://placehold.co/1200x630/1e1b4b/ffffff?text=SecureTrust';
+
+            document.title = `${Title} | SecureTrust`;
+            document.querySelector('meta[name="description"]').setAttribute('content', Summary);
+            document.querySelector('meta[name="keywords"]').setAttribute('content', Keywords || '');
+
+            document.querySelector('meta[property="og:title"]').setAttribute('content', `${Title} | SecureTrust`);
+            document.querySelector('meta[property="og:description"]').setAttribute('content', Summary);
+            document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+            document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+
+            document.querySelector('meta[property="twitter:title"]').setAttribute('content', `${Title} | SecureTrust`);
+            document.querySelector('meta[property="twitter:description"]').setAttribute('content', Summary);
+            document.querySelector('meta[property="twitter:image"]').setAttribute('content', imageUrl);
+            document.querySelector('meta[property="twitter:url"]').setAttribute('content', window.location.href);
+        };
+
+        const fetchPost = async () => {
+            const params = new URLSearchParams(window.location.search);
+            const postId = params.get('id');
+
+            if (!postId) {
+                errorText.textContent = "No post ID provided. Please select a post from the blog page.";
+                errorMessage.classList.remove('hidden');
+                loadingIndicator.classList.add('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${STRAPI_URL}/api/blogs/${postId}?populate=*`, {
+                    headers: { 'Authorization': `Bearer ${STRAPI_API_TOKEN}` }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error("Post not found. It may have been moved or deleted.");
+                    }
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const { data } = await response.json();
+
+                if (data) {
+                    updateMetaTags(data.attributes);
+
+                    document.getElementById('post-category').textContent = data.attributes.Category || 'General';
+                    document.getElementById('post-title').textContent = data.attributes.Title;
+                    document.getElementById('post-meta').innerHTML = `
+                        <span>By ${data.attributes.author?.data?.attributes?.Name || 'SecureTrust'}</span> &bull;
+                        <span>${formatDate(data.attributes.publishedAt)}</span>
+                    `;
+
+                    const postImage = document.getElementById('post-image');
+                    const imageUrl = data.attributes.Cover?.data?.attributes?.url;
+                    if (imageUrl) {
+                        postImage.src = `${STRAPI_URL}${imageUrl}`;
+                        postImage.alt = data.attributes.Title;
+                    } else {
+                        postImage.src = `https://placehold.co/1000x500/111827/ec4899?text=SecureTrust`;
+                        postImage.alt = 'Placeholder Image';
+                    }
+
+                    document.getElementById('post-content').innerHTML = marked.parse(data.attributes.Content);
+
+                    postContainer.classList.remove('hidden');
+                } else {
+                     throw new Error("Post data is empty.");
+                }
+
+            } catch (error) {
+                console.error("Failed to fetch post:", error);
+                errorText.textContent = error.message;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', fetchPost);
     </script>
 </body>
 </html>
-
