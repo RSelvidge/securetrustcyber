@@ -207,7 +207,7 @@
             }
 
             try {
-                const response = await fetch(`${STRAPI_URL}/api/blogs/${postId}?populate=*`, {
+                const response = await fetch(`${STRAPI_URL}/api/articles/${postId}?populate=*`, {
                     headers: { 'Authorization': `Bearer ${STRAPI_API_TOKEN}` }
                 });
 

@@ -237,7 +237,7 @@
         const fetchPosts = async () => {
             try {
                 // Fetch posts, sorting by publication date descending, and populating relations
-                const response = await fetch(`${STRAPI_URL}/api/blogs?sort=publishedAt:desc&populate=*`, {
+                const response = await fetch(`${STRAPI_URL}/api/articles?sort=publishedAt:desc&populate=*`, {
                     headers: { 'Authorization': `Bearer ${STRAPI_API_TOKEN}` }
                 });
 
